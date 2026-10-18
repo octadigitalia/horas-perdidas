@@ -1,15 +1,14 @@
 /* Configuracao de producao do Diagnostico de Horas Perdidas (OctaDigital).
    Ajuste SO os valores abaixo; o restante da aplicacao nao muda. */
 const HPH_CONFIG = {
-  /* Endpoint de captura de leads: webhook do roteador do Trafego (Google Sheets).
-     POST JSON com o schema documentado no README.
-     Vazio = modo homologacao: o campo de e-mail fica oculto e nenhuma promessa
-     de envio e exibida, evitando coleta quebrada. */
-  leadsWebhookUrl: "",
+  /* Endpoint de captura de leads: webhook do roteador do Trafego.
+     Fluxo homologado em OCT-27: grava em Google Sheets + PostgreSQL de
+     contingencia e notifica a executiva via WAHA. CORS liberado para
+     https://octadigitalia.github.io. */
+  leadsWebhookUrl: "https://webhooks.octadigital.com.br/webhook/horas-perdidas-leads",
 
-  /* Link de checkout/parceiro do Hub de IA (R$ 97/mes) usado no CTA final.
-     Deve ser preenchido antes do lancamento publico. */
-  hubUrl: "",
+  /* Link de checkout/parceiro do Hub de IA (R$ 97/mes) usado no CTA final. */
+  hubUrl: "https://octadigital.com.br/",
 
   /* Custo medio da hora de trabalho manual (BRL), pre-populado e editavel
      pelo usuario na primeira tela do diagnostico. */

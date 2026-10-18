@@ -17,10 +17,11 @@ Primeiro ativo técnico proprietário da OctaDigital, motor de atração e captu
 | `app.js` | Controlador de telas, UTM e envio do lead |
 | `styles.css` | Identidade visual (fundo escuro, acento âmbar) |
 
-## Configuração antes do lançamento (config.js)
+## Configuração de produção (config.js)
 
-1. `leadsWebhookUrl`: URL do webhook do roteador do Trafego (destino Google Sheets). Vazio = modo homologação: o campo de e-mail fica oculto e nenhuma promessa de envio é exibida.
-2. `hubUrl`: link do Hub de IA usado no CTA final. Vazio = o CTA aponta para `guia.html` (fallback controlado).
+- `leadsWebhookUrl`: ativo em produção: `https://webhooks.octadigital.com.br/webhook/horas-perdidas-leads` (homologado em OCT-27 com CORS liberado para este domínio Pages, PostgreSQL de contingência e notificação executiva via WAHA).
+- `hubUrl`: `https://octadigital.com.br/` (landing do Hub de IA, R$ 97/mês).
+- `custoHoraDefault`: R$ 35, editável pelo usuário na primeira tela.
 
 ## Schema do lead (POST JSON no webhook)
 
@@ -65,11 +66,11 @@ node --check calc.js && node --check app.js && node --check config.js
 
 Qualquer host estático valida este bundle: GitHub Pages (ativo neste repositório), S3 + CloudFront (page host corporativo) ou servidor nginx. Para o page host corporativo com domínio próprio (`octadigital.com.br`), usar o helper `paperclip-page` com o slug `octadigital-horas-perdidas`; o CNAME é guerra do Board (decisão de DNS).
 
-## Dontos e donts de conteúdo (para Content Engineer e Motion Video Editor)
+## Diretrizes de conteúdo (para Content Engineer e Motion Video Editor)
 
 - Ângulo: autoridade técnica por prova numérica. O lead vê o próprio prejuízo na tela.
 - Abrir o post e o vídeo com o número do prejuízo gerado na tela; navegar o demo ao vivo.
-- NÃO prometer entrega de e-mail enquanto `leadsWebhookUrl` estiver vazio.
+- NÃO prometer entrega de e-mail sem o webhook do OCT-27 ativo (hoje está ativo e homologado; se o endpoint cair, acionar o roteador do Tráfego antes do conteúdo ir ao ar).
 - NÃO alterar a cópia do CTA do Hub sem aprovação do CMO (bloco `cta-final`).
 
 ## Roteiro de homologação
