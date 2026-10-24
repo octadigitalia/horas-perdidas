@@ -1,11 +1,10 @@
 /* Configuracao de producao do Diagnostico de Horas Perdidas (OctaDigital).
-   Ajuste SO os valores abaixo; o restante da aplicacao nao muda. */
+   ATIVO CANCELADO pelo Board em 2026-10-24 (OCT-20): captura desligada.
+   Mapeador em octadigital.com.br/mapeador segue intacto e separado. */
 const HPH_CONFIG = {
-  /* Endpoint de captura de leads: webhook do roteador do Trafego.
-     Fluxo homologado em OCT-27: grava em Google Sheets + PostgreSQL de
-     contingencia e notifica a executiva via WAHA. CORS liberado para
-     https://octadigitalia.github.io. */
-  leadsWebhookUrl: "https://webhooks.octadigital.com.br/webhook/horas-perdidas-leads",
+  /* Endpoint de captura de leads: DESLIGADO por cancelamento total.
+     Valor vazio oculta o campo de e-mail por design, sem promessa quebrada. */
+  leadsWebhookUrl: "",
 
   /* Link de checkout/parceiro do Hub de IA (R$ 97/mes) usado no CTA final. */
   hubUrl: "https://octadigital.com.br/",
@@ -15,5 +14,5 @@ const HPH_CONFIG = {
   custoHoraDefault: 35,
 
   /* Versao do ativo, enviada em cada lead para diagnostico de regressao. */
-  versao: "1.0.0",
+  versao: "1.0.0-cancelled",
 };
